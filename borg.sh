@@ -3,7 +3,7 @@
 # https://borgbackup.readthedocs.io/en/stable/quickstart.html
 
 # Setting this, so the repo does not need to be given on the commandline:
-export BORG_REPO=CHANGE_HERE_TO_YOUR_REPO
+export BORG_REPO=ssh://x161.hn.org:22/backup/postdoc/jcyang/borgbackup/lab
 
 # See the section "Passphrase notes" for more infos.
 # export BORG_PASSPHRASE='XYZl0ngandsecurepa_55_phrasea&&123'
@@ -35,9 +35,7 @@ borg create                         \
     --exclude '/home/*/tmp/*'       \
                                     \
     ::'{hostname}-{now}'            \
-    /etc                            \
     /home                           \
-    /root                           \
 
 backup_exit=$?
 

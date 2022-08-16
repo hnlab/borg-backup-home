@@ -5,7 +5,7 @@ An example of borg to backup your home in linux.
 
 ### 1. Download [Standalone Binary](https://borgbackup.readthedocs.io/en/stable/installation.html#standalone-binary) and install (copy) borg to local and remote.
 ```
-wget https://github.com/borgbackup/borg/releases/download/2.0.0b1   borg-linux64
+wget https://github.com/borgbackup/borg/releases/download/1.2.1/borg-linux64
 chmod +x borg-linux64
 mv borg-linux64 ~/bin/borg
 ```
@@ -40,8 +40,25 @@ export BORG_REPO=CHANGE_HERE_TO_YOUR_REPO
 to
 ```
 export BORG_REPO=ssh://x161.hn.org:22/backup/postdoc/jcyang/borgbackup/lab
-borg info --verbose ::first_archive
 ```
 
-   
-   
+test setup and run backup
+```
+borg info --verbose ::first_archive
+
+# backup all files in /home first time
+bash borg.sh
+```
+
+### 4. setup crontab (open another terminal)
+```
+chmod +x borg.sh
+cp borg.sh ~/bin
+```
+
+```
+# crontab -e
+# add this command into crontab, it run backup files daily.
+# please change path/to/borg.sh
+0 0 * * * /home/jcyang/bin/borg.sh >/tmp/borg.sh.log 2>&1
+```
