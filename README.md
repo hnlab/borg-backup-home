@@ -13,13 +13,13 @@ Add `export PATH=$HOME/bin:$PATH` in `~/.bashrc`.
 
 **Install borg at remote in the same way.**
 
-### 2. create remote repo:
+### 2. create remote repo
 ```bash
 hostname=x161.hn.org
 borg_bin='~/bin/borg'
 backup_path=/backup/postdoc/jcyang
 borg_folder=borgbackup
-repo_name=test_repo
+repo_name=lab
 repo_path=$backup_path/$borg_folder/$repo_name
 
 # create folder
@@ -30,6 +30,17 @@ borg init --verbose $hostname:$repo_path --encryption=none
 
 # create first archive (commit) to backup all files in `~/bin`
 borg create --verbose --stats $hostname:$repo_path::first_archive ~/bin
+```
+
+### 3. backup your `/home`
+change
+```
+export BORG_REPO=CHANGE_HERE_TO_YOUR_REPO
+```
+to
+```
+export BORG_REPO=ssh://x161.hn.org:22/backup/postdoc/jcyang/borgbackup/lab
+borg info --verbose ::first_archive
 ```
 
    
