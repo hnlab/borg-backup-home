@@ -3,7 +3,8 @@
 # https://borgbackup.readthedocs.io/en/stable/quickstart.html
 
 # Setting this, so the repo does not need to be given on the commandline:
-export BORG_REPO=ssh://x161.hn.org:22/backup/postdoc/jcyang/borgbackup/lab
+# export BORG_REPO=ssh://x161.hn.org:22/backup/postdoc/jcyang/borgbackup/lab
+export BORG_REPO=ssh://x161:22/backup/student/qwang/borgbackup/lab
 
 # See the section "Passphrase notes" for more infos.
 # export BORG_PASSPHRASE='XYZl0ngandsecurepa_55_phrasea&&123'
